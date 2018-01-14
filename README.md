@@ -32,6 +32,8 @@ It's a best practice to exclude files with creadentials from source control.
 ts-node ./examples/[script-name]
 ```
 
+Warning! Auth options in private.json depended on certain PC (HID) so the file must be generated for every new PC where run.
+
 ## Bundling scripts
 
 When creating automation scripts for production environment, e.g. Azure Job or Function or embedded application like Electron, it can be important to bundle and minify sources with positive performant effect as a result.

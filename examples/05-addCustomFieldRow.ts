@@ -27,7 +27,7 @@ let jsomNodeOptions: IJsomNodeInitSettings = {
   const lutEntry = new PS.LookupEntryCreationInformation();
 
   lutEntry.set_description('my descr');
-  lutEntry.set_sortIndex(10);
+  lutEntry.set_sortIndex(11); //Index of new row (previosly get it see ex. 04-getCustomRows.ts)
   lutEntry.set_id(newId);
   lutEntry.set_parentId(null);
 
