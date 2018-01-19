@@ -32,7 +32,7 @@ It's a best practice to exclude files with creadentials from source control.
 ts-node ./examples/[script-name]
 ```
 
-Warning! Auth options in private.json depended on certain PC (HID) so the file must be generated for every new PC where run.
+Warning! Auth options in private.json depended on certain PC (HID) so the file must be generated (by new JsomNode().wizard()) for every new PC where run.
 
 ## Bundling scripts
 
