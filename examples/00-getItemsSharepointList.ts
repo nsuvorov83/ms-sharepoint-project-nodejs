@@ -10,11 +10,6 @@ let jsomNodeOptions: IJsomNodeInitSettings = {
 
 interface IList {
   jur: string;
-  email: string;
-}
-
-interface IFields {
-  name: string;
 }
 
 (async () => {
@@ -27,13 +22,7 @@ interface IFields {
   const oView = oList.get_defaultView();
   const lookupListFields = oList.get_fields();
 
-
-  var camlQuery = new SP.CamlQuery();
-    camlQuery.set_viewXml(
-        "<View>" +
-        "</View>");
-
-  let list = oList.getItems(camlQuery);
+  let list = oList.getItems(new SP.CamlQuery()); //Делаем без фильтра, поэтому без set_viewXml
 
   ctx.load(list);
   ctx.load(lookupListFields);
@@ -41,22 +30,14 @@ interface IFields {
 
   await ctx.executeQueryPromise();
 
-  let fields_result: IFields[] = lookupListFields.get_data().map(f => {
-    return {
-      name: f.get_title()
-    }
-  });
-
   let list_result: IList[] = list.get_data().map(p => {
-    //Кодификация полей в SharePoint. Чтобы узнать эти коды нужно импортировать список в Excel
+    //Кодификация полей в SharePoint
+    //Получение списка полей SP: https://your_domain.sharepoint.com/sites/your_site/_api/web/lists/GetByTitle('your_list_name')/fields
     return {
-      jur: p.get_item("Jur.face"),
-      email: p.get_item("Email")
+      jur: p.get_item("_x0043_ol1")
     };
   });
-
   
   console.log(list_result);
-  console.log(fields_result);
 
 })().catch(console.log);
