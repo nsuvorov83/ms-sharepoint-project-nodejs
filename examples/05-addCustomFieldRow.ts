@@ -38,9 +38,6 @@ let jsomNodeOptions: IJsomNodeInitSettings = {
 
   lookupTables.update(myEntries);
 
-  projContext.load(lookupTables);
-  projContext.load(myEntries);
-
   await projContext.executeQueryPromise();
 
   console.log('Done');
